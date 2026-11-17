@@ -19,3 +19,23 @@ Features:
 
 Stack: YOLOv8 · U-Net · MobileNetV3 · FastAPI · 
        React · WebSocket · Docker · PyTorch · COCO
+
+
+## Pipeline
+
+![Threat Vision pipeline](threat-vision-pipeline.png)
+
+## Files
+
+| File | Purpose |
+|---|---|
+| `fine_tuning.py` | Fine-tunes the U-Net (ResNet34) segmentation model |
+| `u_net_video_clearing.py` | Runs the full detection, classification and video-clearing pipeline, and serves it with FastAPI over WebSocket |
+| `App.jsx`, `ThreatDashboard.jsx` | React dashboard: live video feed and alert log |
+| `threat-vision-pipeline.png` | Pipeline diagram |
+
+## Running it
+
+Both Python scripts were written in **Google Colab** with a T4 GPU, and start with `!pip install` cells. Open them in Colab and run them top to bottom.
+
+`u_net_video_clearing.py` uses ngrok to expose the API, and reads the token from Colab secrets (`NGROK_TOKEN`). Add your token there and never paste it into the code.
